@@ -79,8 +79,8 @@ function renderCard(bookmarklet) {
           <button type="button" class="copy-button" data-code="${bookmarklet.href}">
             コードをコピー
           </button>
+          <span class="card__status" role="status" aria-live="polite"></span>
         </div>
-        <p class="card__status" role="status" aria-live="polite"></p>
         <p class="card__source"><a href="./${encodeURIComponent(bookmarklet.file)}">ソースを見る</a></p>
       </article>`;
 }
@@ -209,9 +209,8 @@ function renderPage(bookmarklets) {
     outline-offset: 2px;
   }
   .card__status {
-    min-height: 1.5em;
-    margin: 0.75rem 0 0;
     font-size: 0.9rem;
+    color: var(--fg-muted);
   }
   .card__source {
     margin: 0.5rem 0 0;
@@ -245,6 +244,14 @@ ${cards}
 </footer>
 <script>
 (function () {
+  var statuses = document.querySelectorAll('.card__status');
+
+  function clearStatuses() {
+    statuses.forEach(function (status) {
+      status.textContent = '';
+    });
+  }
+
   document.querySelectorAll('.drag-link').forEach(function (link) {
     link.addEventListener('click', function (event) {
       event.preventDefault();
@@ -254,6 +261,7 @@ ${cards}
 
   document.querySelectorAll('.copy-button').forEach(function (button) {
     button.addEventListener('click', function () {
+      clearStatuses();
       var code = button.getAttribute('data-code');
       var status = button.closest('.card').querySelector('.card__status');
       navigator.clipboard.writeText(code).then(function () {
@@ -263,6 +271,8 @@ ${cards}
       });
     });
   });
+
+  window.addEventListener('blur', clearStatuses);
 })();
 </script>
 </body>
