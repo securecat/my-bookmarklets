@@ -4,7 +4,9 @@
 
 ## Installation
 
-各 `.js` ファイルの内容に`Javascript:`スキームをつけて、ブラウザのブックマークのURLとしてください。
+[インストールページ](https://securecat.github.io/my-bookmarklets/)を開き、各ブックマークレット名のリンクをブラウザのブックマークバーへドラッグ&ドロップしてください。
+
+ドラッグができない場合は、各 `.js` ファイルの内容に`Javascript:`スキームをつけて、ブラウザのブックマークのURLとしてください。
 
 ## Bookmarklets
 
