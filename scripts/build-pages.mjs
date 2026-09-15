@@ -3,12 +3,13 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const rootDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const bookmarkletsDir = path.join(rootDir, 'bookmarklets');
 const outDir = path.join(rootDir, 'dist');
 
 const META_LINE = /^\/\/\s*@(\w+)\s+(.*)$/;
 
 async function loadBookmarklets() {
-  const entries = await readdir(rootDir, { withFileTypes: true });
+  const entries = await readdir(bookmarkletsDir, { withFileTypes: true });
   const jsFiles = entries
     .filter((entry) => entry.isFile() && entry.name.endsWith('.js'))
     .map((entry) => entry.name)
@@ -16,7 +17,7 @@ async function loadBookmarklets() {
 
   const bookmarklets = [];
   for (const fileName of jsFiles) {
-    const raw = await readFile(path.join(rootDir, fileName), 'utf8');
+    const raw = await readFile(path.join(bookmarkletsDir, fileName), 'utf8');
     bookmarklets.push(parseBookmarklet(fileName, raw));
   }
   return bookmarklets;
@@ -305,7 +306,7 @@ async function main() {
   await writeFile(path.join(outDir, 'index.html'), html, 'utf8');
 
   for (const bookmarklet of bookmarklets) {
-    const src = await readFile(path.join(rootDir, bookmarklet.file), 'utf8');
+    const src = await readFile(path.join(bookmarkletsDir, bookmarklet.file), 'utf8');
     await writeFile(path.join(outDir, bookmarklet.file), src, 'utf8');
   }
 
