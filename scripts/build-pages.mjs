@@ -106,6 +106,7 @@ function renderPage(bookmarklets) {
     --button-border: #4b4b4b;
     --focus-ring: #0645ad;
     --status-success: #197a4b;
+    --on-primary: #ffffff;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -120,6 +121,7 @@ function renderPage(bookmarklets) {
       --button-border: #9a9aa2;
       --focus-ring: #8ab4ff;
       --status-success: #34d399;
+      --on-primary: #1a1a1a;
     }
   }
   * { box-sizing: border-box; }
@@ -182,10 +184,10 @@ function renderPage(bookmarklets) {
   .drag-link {
     display: inline-block;
     padding: 0.5rem 1rem;
-    border: 1px solid var(--button-border);
+    border: 1px solid var(--link);
     border-radius: 0.375rem;
-    background: var(--button-bg);
-    color: var(--link);
+    background: var(--link);
+    color: var(--on-primary);
     text-decoration: underline;
     font-weight: bold;
     cursor: grab;
@@ -194,8 +196,8 @@ function renderPage(bookmarklets) {
     text-decoration: underline;
     text-decoration-thickness: 2px;
   }
-  .drag-link:visited {
-    color: var(--link-visited);
+  .drag-link:focus-visible {
+    outline-color: var(--on-primary);
   }
   .copy-button {
     padding: 0.5rem 1rem;
