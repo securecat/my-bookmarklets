@@ -197,7 +197,7 @@ function renderPage(bookmarklets) {
     text-decoration-thickness: 2px;
   }
   .drag-link:focus-visible {
-    outline-color: var(--on-primary);
+    outline-offset: 4px;
   }
   .copy-button {
     padding: 0.5rem 1rem;
