@@ -105,6 +105,7 @@ function renderPage(bookmarklets) {
     --button-bg: #f0f0f0;
     --button-border: #4b4b4b;
     --focus-ring: #0645ad;
+    --status-success: #197a4b;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -118,6 +119,7 @@ function renderPage(bookmarklets) {
       --button-bg: #2c2c30;
       --button-border: #9a9aa2;
       --focus-ring: #8ab4ff;
+      --status-success: #34d399;
     }
   }
   * { box-sizing: border-box; }
@@ -212,6 +214,9 @@ function renderPage(bookmarklets) {
     font-size: 0.9rem;
     color: var(--fg-muted);
   }
+  .card__status--success {
+    color: var(--status-success);
+  }
   .card__source {
     margin: 0.5rem 0 0;
     font-size: 0.9rem;
@@ -222,8 +227,17 @@ function renderPage(bookmarklets) {
     color: var(--fg-muted);
     font-size: 0.9rem;
   }
+  .card__source a,
   footer a {
     color: var(--link);
+  }
+  .card__source a:visited,
+  footer a:visited {
+    color: var(--link-visited);
+  }
+  .card__source a:hover, .card__source a:focus-visible,
+  footer a:hover, footer a:focus-visible {
+    text-decoration-thickness: 2px;
   }
 </style>
 </head>
@@ -249,6 +263,7 @@ ${cards}
   function clearStatuses() {
     statuses.forEach(function (status) {
       status.textContent = '';
+      status.classList.remove('card__status--success');
     });
   }
 
@@ -266,6 +281,7 @@ ${cards}
       var status = button.closest('.card').querySelector('.card__status');
       navigator.clipboard.writeText(code).then(function () {
         status.textContent = 'コードをコピーしました。';
+        status.classList.add('card__status--success');
       }, function () {
         status.textContent = 'コピーに失敗しました。手動で選択してコピーしてください。';
       });
