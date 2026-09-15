@@ -37,7 +37,7 @@ function parseBookmarklet(fileName, raw) {
     .slice(i)
     .map((line) => line.trim())
     .filter((line) => line.length > 0)
-    .join(' ');
+    .join('');
 
   return {
     file: fileName,
@@ -46,7 +46,7 @@ function parseBookmarklet(fileName, raw) {
     version: meta.version || '',
     author: meta.author || '',
     updated: meta.updated || '',
-    href: 'javascript:' + encodeURIComponent(code),
+    href: 'javascript:' + code,
   };
 }
 
@@ -73,10 +73,10 @@ function renderCard(bookmarklet) {
         <p class="card__description">${escapeHtml(bookmarklet.description)}</p>
         ${metaLine}
         <div class="card__actions">
-          <a class="drag-link" href="${bookmarklet.href}" data-code="${bookmarklet.href}">
+          <a class="drag-link" href="${escapeHtml(bookmarklet.href)}" data-code="${escapeHtml(bookmarklet.href)}">
             ${escapeHtml(bookmarklet.name)}
           </a>
-          <button type="button" class="copy-button" data-code="${bookmarklet.href}">
+          <button type="button" class="copy-button" data-code="${escapeHtml(bookmarklet.href)}">
             コードをコピー
           </button>
           <span class="card__status" role="status" aria-live="polite"></span>
