@@ -16,4 +16,10 @@
 
 [Install / View](./bookmarklets/kinotento.js)
 
+### unlock
+
+サイトが仕込んでいるコピー・右クリック・テキスト選択の禁止を解除します。動的に追加される要素やShadow DOMにも対応しています。
+
+[Install / View](./bookmarklets/unlock.js)
+
 
