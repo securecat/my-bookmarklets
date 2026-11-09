@@ -69,6 +69,7 @@ function renderCard(bookmarklet) {
     : '';
 
   return `
+    <li>
       <article class="card">
         <h2 class="card__name">${escapeHtml(bookmarklet.name)}</h2>
         <p class="card__description">${escapeHtml(bookmarklet.description)}</p>
@@ -83,7 +84,8 @@ function renderCard(bookmarklet) {
           <span class="card__status" role="status" aria-live="polite"></span>
         </div>
         <p class="card__source"><a href="./${encodeURIComponent(bookmarklet.file)}">ソースを見る</a></p>
-      </article>`;
+      </article>
+    </li>`;
 }
 
 function renderPage(bookmarklets) {
@@ -173,7 +175,7 @@ function renderPage(bookmarklets) {
   }
   .card__meta {
     margin: 0 0 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--fg-muted);
   }
   .card__actions {
@@ -214,7 +216,7 @@ function renderPage(bookmarklets) {
     outline-offset: 2px;
   }
   .card__status {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--fg-muted);
   }
   .card__status--success {
@@ -222,13 +224,13 @@ function renderPage(bookmarklets) {
   }
   .card__source {
     margin: 0.5rem 0 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   footer {
     max-width: 40rem;
     margin: 3rem auto 0;
     color: var(--fg-muted);
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   .card__source a,
   footer a {
