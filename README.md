@@ -16,6 +16,14 @@
 
 [Install / View](./bookmarklets/kinotento.js)
 
+### notion-link-visibility
+
+Notion のリンク・メンション・目次・未入力のプロパティ・コメントの日付などの薄いグレーの文字を見やすい色にし、半透明の極細の下線を標準の下線に戻します。ボタンブロックの枠線とインラインコードも、見やすい色にします。もう一度実行すると元に戻ります。
+
+Tampermonkey 用のユーザースクリプト [notion-link-visibility.user.js](https://github.com/securecat/tampermonkey-userscripts/blob/main/userscripts/notion-link-visibility.user.js) を、Tampermonkey をインストールできない環境でも使えるようにブックマークレットにしたものです。
+
+[Install / View](./bookmarklets/notion-link-visibility.js)
+
 ### unlock
 
 サイトが仕込んでいるコピー・右クリック・テキスト選択の禁止を解除します。動的に追加される要素やShadow DOMにも対応しています。
