@@ -288,7 +288,7 @@ ${cards}
         status.textContent = 'コードをコピーしました。';
         status.classList.add('card__status--success');
       }, function () {
-        status.textContent = 'コピーに失敗しました。手動で選択してコピーしてください。';
+        status.textContent = 'コピーに失敗しました。権限がありません。';
       });
     });
   });
